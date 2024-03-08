@@ -1,19 +1,23 @@
 #!/usr/bin/python3
 """
-Solving Pascal Triangle
+0-pascal_triangle task
 """
+
+
 def pascal_triangle(n):
-    """Pascal Triangle"""
-    triangle = []
+    """
+    function that returns a list of integers
+    representing the Pascal Triangle of n
+    """
+    t = []
     if n <= 0:
-        return triangle
-    for i in range(n):
-        inner_numbers = []
-        for j in range(i + 1):
-            if j == 0 or j == i:
-                inner_numbers.append(1)
-            elif i > 0 and j > 0:
-                outer_numbers = triangle[i - 1][j - 1] if j - 1 >= 0 else 0
-                inner_numbers.append(outer_numbers + triangle[i - 1][j])
-        triangle.append(inner_numbers)
-    return triangle
+        return t
+    t = [[1]]
+    for i in range(1, n):
+        tri = [1]
+        for j in range(len(t[i - 1]) - 1):
+            curs = t[i - 1]
+            tri.append(t[i - 1][j] + t[i - 1][j + 1])
+        tri.append(1)
+        t.append(tri)
+    return t
