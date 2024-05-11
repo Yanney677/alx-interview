@@ -1,13 +1,17 @@
 #!/usr/bin/python3
-"""Island Perimeter"""
-
+"""
+Island Perimeter
+"""
 
 def island_perimeter(grid):
-    """Function that returns the perimeter of
-    the given island"""
+    """
+     returns the perimeter of the island described in grid
+    :param grid:
+    :return:
+    """
     perimeter = 0
     for row in grid + list(map(list, zip(*grid))):
-        for i, j in zip([0] + row, row + [0]):
-            perimeter += int(i != j)
+        for i1, j2 in zip([0] + row, row + [0]):
+            perimeter += int(i1 != j2)
     return perimeter
 
